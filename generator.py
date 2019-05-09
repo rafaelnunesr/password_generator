@@ -1,6 +1,8 @@
 from random import randint
 
-levels = {1: [20, '4 SEXTILLION YEARS'], 2: [30, '233 DUODECILLION YEARS'], 3: [40, '15 NOVEMDECILLION YEARS']}
+levels = {1: [16, '3 TRILLION YEARS', 128],
+          2: [32, '2 QUATTUORDECILLION YEARS', 256],
+          3: [64, '6 QUINQUATRIGINTILLION YEARS', 512]}
 
 def generate_password(level):
     password = ''
@@ -12,9 +14,9 @@ def generate_password(level):
 
 def head():
     print('Levels:')
-    print('        [1] - Low    (20 characteres)')
-    print('        [2] - Medium (30 characteres)')
-    print('        [3] - Hard   (40 characteres)')
+    print('        [1] - 128 bits')
+    print('        [2] - 256 bits')
+    print('        [3] - 512 bits')
 
 def space():
     for e in range(2):
@@ -31,7 +33,7 @@ def main():
         num = int(level)
         if num > 0 and num < 4:
             pss = generate_password(num)
-            print('YOUR PASSWORD IS: {}{}{}'.format('\033[1;32m', pss, '\033[m'))
+            print('YOUR ({} bits) PASSWORD IS: {}{}{}'.format(levels[num][2] , '\033[1;32m', pss, '\033[m'))
             how_much_time_to_break_pwd(num)
         else:
             print('Sorry, Invalid Input')
